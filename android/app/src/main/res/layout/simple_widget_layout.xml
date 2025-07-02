@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widgetCard"
+    android:layout_width="180dp"
+    android:layout_height="180dp"
+    android:layout_gravity="center"
+    android:background="@drawable/widget_card_bg"
+    android:padding="12dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/widget_logo"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="end"
+            android:src="@drawable/ameyalogo"
+            android:contentDescription="Logo" />
+
+        <ImageView
+            android:id="@+id/widget_icon"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/addfood"
+            android:contentDescription="Icon" />
+
+        <TextView
+            android:id="@+id/widget_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Data"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:gravity="center" />
+    </LinearLayout>
+</FrameLayout>
