@@ -1,12 +1,12 @@
 // src/navigation/AppNavigator.tsx
-import React from 'react';
+import React, {useEffect, useRef } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { createNavigationContainerRef, NavigationContainer } from '@react-navigation/native';
+import {  NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
 import Home from '../screens/home/Home';
 import FoodLog from '../screens/food_log/FoodLog';
 import Movements from '../screens/movements/Movements';
 import Activity from '../screens/activity/Activity';
-
+import { NativeModules} from 'react-native';
 
 export type RootStackParamList = {
   Home: undefined;
@@ -16,8 +16,25 @@ export type RootStackParamList = {
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
-export const navigationRef = createNavigationContainerRef<RootStackParamList>();
+
 const AppNavigator = () => {
+  const navigationRef = useRef<NavigationContainerRef<RootStackParamList>>(null);
+
+useEffect(() => {
+  const checkIntent = async () => {
+    try {
+      const result = await NativeModules.IntentLauncher.getInitialIntent();
+      if (result?.screen) {
+        navigationRef.current?.navigate(result.screen);
+      }
+    } catch (e) {
+      console.error("Error getting initial intent:", e);
+    }
+  };
+
+  checkIntent();
+}, []);
+
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">

@@ -15,7 +15,7 @@ import com.awesomeproject.WidgetUpdaterPackage
 import android.os.Bundle
 import android.content.Intent
 import android.net.Uri
-
+import com.awesomeproject.IntentLauncherModule
 
 
 class MainApplication : Application(), ReactApplication {
@@ -25,6 +25,7 @@ class MainApplication : Application(), ReactApplication {
        override fun getPackages(): List<ReactPackage> {
     val packages = PackageList(this).packages.toMutableList() 
     packages.add(WidgetUpdaterPackage()) 
+    packages.add(IntentLauncherPackage())
     return packages
 }
 

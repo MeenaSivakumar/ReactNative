@@ -26,7 +26,7 @@ class SimpleWidgetProvider : AppWidgetProvider() {
 
         val views = RemoteViews(context.packageName, R.layout.simple_widget_layout)
 
-        // ✅ Match with XML IDs
+       
         views.setTextViewText(R.id.widget_text, text)
 
         val iconRes = when (type) {

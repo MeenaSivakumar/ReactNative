@@ -15,8 +15,8 @@ const Activity = () => {
 
     const logMessage = `Activity: ${activity}`;
     await AsyncStorage.setItem('lastActivity', activity);
-    await AsyncStorage.setItem('widget_text', logMessage); // ✅ Required by widget
-    await AsyncStorage.setItem('widget_type', 'activity'); // ✅ Set widget type
+    await AsyncStorage.setItem('widget_text', logMessage); 
+    await AsyncStorage.setItem('widget_type', 'activity'); 
     WidgetUpdater.updateWidget(logMessage);
 
     setActivity('');

@@ -16,7 +16,7 @@ const Movements = () => {
     const message = `Last Movement: ${exercise}`;
     await AsyncStorage.setItem('lastMovement', exercise);
     await AsyncStorage.setItem('widget_text', message);
-    await AsyncStorage.setItem('widget_type', 'movement'); // ✅ Set widget type
+    await AsyncStorage.setItem('widget_type', 'movement');
     WidgetUpdater.updateWidget(message);
 
     setExercise('');
