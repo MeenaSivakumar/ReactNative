@@ -53,7 +53,7 @@ const FoodLog = () => {
 
     await AsyncStorage.setItem('foodLogs', JSON.stringify(updatedLogs));
     await AsyncStorage.setItem('widget_type','food');
-    WidgetUpdater.updateWidget(`Last Meal: ${newLog.name}`);
+    WidgetUpdater.updateWidget(`Last Meal: ${newLog.name}`,'food');
 
     if (mountedRef.current) {
       InteractionManager.runAfterInteractions(() => {

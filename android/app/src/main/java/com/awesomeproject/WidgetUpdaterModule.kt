@@ -13,10 +13,12 @@ class WidgetUpdaterModule(reactContext: ReactApplicationContext) : ReactContextB
     override fun getName() = "WidgetUpdater"
 
     @ReactMethod
-    fun updateWidget(data: String) {
+    fun updateWidget(data: String,type: String) {
         val context = reactApplicationContext
         val prefs = context.getSharedPreferences("MyAppStorage", Context.MODE_PRIVATE)
-        prefs.edit().putString("widget_text", data).apply()
+        
+        prefs.edit().putString("widget_text", data).putString("widget_type", type).apply()
+        
 
         val intent = Intent(context, SimpleWidgetProvider::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE

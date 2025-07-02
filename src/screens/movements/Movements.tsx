@@ -11,14 +11,15 @@ const Movements = () => {
   const [snackbarVisible, setSnackbarVisible] = useState(false);
 
   const logMovement = async () => {
-    if (!exercise.trim()) return;
-
+    console.log("clicked")
+    if (!exercise.trim()) {return;}
+    console.log('after return')
     const message = `Last Movement: ${exercise}`;
     await AsyncStorage.setItem('lastMovement', exercise);
     await AsyncStorage.setItem('widget_text', message);
     await AsyncStorage.setItem('widget_type', 'movement');
-    WidgetUpdater.updateWidget(message);
-
+    WidgetUpdater.updateWidget(message,'movement');
+    console.log('message',message)
     setExercise('');
     setSnackbarVisible(true);
     Keyboard.dismiss();

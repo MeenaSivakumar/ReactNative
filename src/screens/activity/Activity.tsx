@@ -12,12 +12,13 @@ const Activity = () => {
 
   const logActivity = async () => {
     if (!activity.trim()) return;
-
+    console.log('clicked activity')
     const logMessage = `Activity: ${activity}`;
     await AsyncStorage.setItem('lastActivity', activity);
     await AsyncStorage.setItem('widget_text', logMessage); 
     await AsyncStorage.setItem('widget_type', 'activity'); 
-    WidgetUpdater.updateWidget(logMessage);
+    WidgetUpdater.updateWidget(logMessage,'activity');
+    console.log('log Message')
 
     setActivity('');
     setSnackbarVisible(true);

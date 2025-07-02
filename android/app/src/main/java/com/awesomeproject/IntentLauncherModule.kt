@@ -12,21 +12,13 @@ class IntentLauncherModule(private val reactContext: ReactApplicationContext) :
     override fun getName(): String = "IntentLauncher"
 
     @ReactMethod
-    fun getInitialIntent(promise: Promise) {
-        try {
-            val currentActivity = currentActivity
-            if (currentActivity != null) {
-                val intent = currentActivity.intent
-                val screen = intent.getStringExtra("screen")
-
-                val result = Arguments.createMap()
-                result.putString("screen", screen)
-                promise.resolve(result)
-            } else {
-                promise.reject("NO_ACTIVITY", "Current activity is null")
-            }
-        } catch (e: Exception) {
-            promise.reject("INTENT_ERROR", "Error reading intent: ${e.message}", e)
-        }
+   fun getInitialScreen(promise: Promise) {
+    val activity = currentActivity
+    if (activity != null) {
+      val screen = activity.intent?.getStringExtra("screen")
+      promise.resolve(screen)
+    } else {
+      promise.resolve(null)
     }
+  }
 }
