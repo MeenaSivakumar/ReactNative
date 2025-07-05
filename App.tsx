@@ -13,10 +13,11 @@ import {
 import {
 
 } from 'react-native/Libraries/NewAppScreen';
+import GroceryPage from './src/pages/grocery/GroceryPage';
 
 function App(): React.JSX.Element {
   return <SafeAreaView>
-
+<GroceryPage/>
   </SafeAreaView>;
 }
 
